@@ -15,12 +15,11 @@ const markdown = new BetterMarkdown();
 ```
 > Adding new text
 ```js
-// Text, bold, underline, color, backgroundColor, add new line?
-markdown.format('Hello World', true, false, 'RED', null, true);
+// Text, type, color, backgroundColor, add new line?
+markdown.format('Hello World', 'DEFAULT', 'RED', null, true);
 /**
  * 'Hello World': Text to format
- *  true: Bold
- *  false: Underline
+ *  'DEFAULT': Text not bold, underline
  *  'RED': Color
  *  null: BackgroundColor
  *  true: Add new line
@@ -50,6 +49,16 @@ markdown.format('Hello World', true, false, 'RED', null, true);
    * * `LIGHTGRAY`: 44,
    * * `INDIGO`: 45,
    * * `WHITE`: 47
+*/
+```
+- <strong>List Type</strong>
+```js
+/**
+   * * Type: enum
+   * * `BOLD`: '0;1;',
+   * * `UNDERLINE`: '0;4;',
+   * * `DEFAULT`: '0;',
+   * * `BOTH`: '1;4;',
 */
 ```
 > Convert to Discord Content
