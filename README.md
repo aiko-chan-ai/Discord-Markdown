@@ -1,5 +1,8 @@
 # Discord Markdown
  Better Markdown to text chat Discord.
+```js
+npm i discord-bettermarkdown@latest
+```
 
 ## Screenshots
 <img src = 'https://cdn.discordapp.com/attachments/820557032016969751/959062827165949973/unknown.png'>

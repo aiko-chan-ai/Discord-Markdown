@@ -26,6 +26,7 @@ class BetterMarkdown {
 	constructor() {
 		/**
 		 * @type {string} String before format
+		 * @private
 		 */
 		this.string = '';
 	}
