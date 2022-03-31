@@ -1,0 +1,36 @@
+{
+  "name": "discord-bettermarkdown",
+  "version": "0.0.1",
+  "description": "Create Discord Markdown with Colorful",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "types": "index.d.ts",
+  "directories": {
+    "lib": "./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aiko-chan-ai/Discord-Markdown.git"
+  },
+  "keywords": [
+    "discord.js",
+    "discord.js v13",
+    "selfbot",
+    "selfbot v13",
+    "djs",
+    "api",
+    "bot",
+    "node",
+    "markdown",
+    "discord markdown"
+  ],
+  "author": "aiko-chan-ai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aiko-chan-ai/Discord-Markdown/issues"
+  },
+  "homepage": "https://github.com/aiko-chan-ai/Discord-Markdown#readme",
+  "dependencies": {}
+}
