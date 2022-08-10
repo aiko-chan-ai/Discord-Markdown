@@ -93,7 +93,7 @@ class BetterMarkdown {
 	toCodeblock() {
 		return `
 \`\`\`${typeCodeblock}
-${this.string}
+${require('discord.js').Util.escapeCodeBlock(this.string)}
 \`\`\`
 `;
 	}
