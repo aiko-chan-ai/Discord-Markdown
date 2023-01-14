@@ -1,104 +1,59 @@
 'use strict';
 /**
- * @extends http://www.unicode-symbol.com/u/001B.html
+ * @see http://www.unicode-symbol.com/u/001B.html
  */
 const unicode = '\u001b';
-const typeCodeblock = 'ansi';
+
 const validColor = {
-  'GRAY': 30,
-  'RED': 31,
-  'GREEN': 32,
-  'YELLOW': 33,
-  'BLUE': 34,
-  'PINK': 35,
-  'CYAN': 36,
-  'WHITE': 37
+	gray: "99;30m",
+	red: "99;31m",
+	green: "99;32m",
+	yellow: "99;33m",
+	blue: "99;34m",
+	pink: "99;35m",
+	cyan: "99;36m",
+	white: "99;37m"
 };
+
 const validBackgroundColor = {
-  'DARKBLUE': 40,
-  'ORANGE': 41,
-  'GRAY': 42,
-  'LIGHTGRAY': 44,
-  'INDIGO': 45,
-  'WHITE': 47
+	bgDarkBlue: "99;40m",
+	bgOrange: "99;41m",
+	bgGray: "99;42m",
+	bgLightGray: "99;44m",
+	bgIndigo: "99;45m",
+	bgWhite: "99;47m"
 }
-const typeFormat = {
-	'BOLD': '0;1;',
-	'UNDERLINE': '0;4;',
-	'DEFAULT': '0;',
-	'BOTH': '1;4;'
-}
-class BetterMarkdown {
-	constructor() {
-		/**
-		 * @type {string} String before format
-		 * @private
-		 */
-		this.string = '';
-	}
 
-	/**
-	 *
-	 * @param {String} text Text to format
-	 * @param {String | null} type Format text ?
-	 * * `BOLD`: '0;1;',
-	 * * `UNDERLINE`: '0;4;',
-	 * * `DEFAULT`: '0;',
-	 * * `BOTH`: '1;4;',
-	 * @param {String | null} color Color of text
-	 * * `GRAY`: 30,
-	 * * `RED`: 31,
-	 * * `GREEN`: 32,
-	 * * `YELLOW`: 33,
-	 * * `BLUE`: 34,
-	 * * `PINK`: 35,
-	 * * `CYAN`: 36,
-	 * * `WHITE`: 37
-	 * @param {String | null} backgroundColor
-	 * * `DARKBLUE`: 40,
-	 * * `ORANGE`: 41,
-	 * * `GRAY`: 42,
-	 * * `LIGHTGRAY`: 44,
-	 * * `INDIGO`: 45,
-	 * * `WHITE`: 47
-	 * @param {Boolean} newLine Add new line ?
-	 * @returns {String} Return string (not format)
-	 */
-	format(
-		text,
-		type = 'DEFAULT',
-		color = null,
-		backgroundColor = null,
-		newLine = false,
-	) {
-		if (!typeof text === 'string') throw new Error('Text must be string');
-		if (!typeof type === 'string')
-			throw new Error('Format options must be string');
-		let format = `${unicode}[${typeFormat[type] || '0;'}${
-			validColor[color] ? `${validColor[color]};` : '99;'
-		}${
-			validBackgroundColor[backgroundColor]
-				? `${validBackgroundColor[backgroundColor]};`
-				: '99;'
-		}`;
-		if (format.endsWith(';')) format = format.slice(0, -1);
-		this.string = `${this.string}${format}m${text}${newLine ? '\n' : ''}`;
-		return this;
-	}
+const UNDERLINE = '4;99m'
+const BOLD = '1;99m'
+const ENDLINE = '0m'
 
-	/**
-	 *
-	 * @returns {String} Return formatted string
-	 */
-	toCodeblock() {
-		return `
-\`\`\`${typeCodeblock}
-${require('discord.js').Util.escapeCodeBlock(this.string)}
-\`\`\`
-`;
+const patchStrings = function () {
+	defineProperty("bold", BOLD);
+	defineProperty("underline", UNDERLINE);
+	for (const color in validColor) {
+		defineProperty(color, validColor[color]);
 	}
-}
-module.exports = BetterMarkdown;
+	for (const color in validBackgroundColor) {
+		defineProperty(color, validBackgroundColor[color]);
+	}
+	// \u001b[{format};{color}m
+	function defineProperty(name, joiner) {
+		Object.defineProperty(String.prototype, name, {
+			get: function get() {
+				if (!this.startsWith(unicode + '[')) {
+					return `${unicode}[${joiner}${this}${unicode}[${ENDLINE}`;
+				} else {
+					return `${unicode}[${joiner}${this}`;
+				}
+			}
+		});
+	}
+};
+
+patchStrings();
+
+module.exports = {};
 /**
- * @extends https://gist.github.com/kkrypt0nn/a02506f3712ff2d1c8ca7c9e0aed7c06
+ * @see https://gist.github.com/kkrypt0nn/a02506f3712ff2d1c8ca7c9e0aed7c06
  */

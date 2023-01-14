@@ -4,68 +4,62 @@
 npm i discord-bettermarkdown@latest
 ```
 
+## Breaking changes
+```diff
+v1.x.x
+- const BetterMarkdown = require('discord-bettermarkdown');
+- const markdown = new BetterMarkdown();
+- markdown.format('Hello World', 'DEFAULT', 'RED', null, true);
+v2.0.0
++ const BetterMarkdown = require('discord-bettermarkdown');
++ 'Hello World'.red
+```
+
+### ok it's the same way with the [colors](https://www.npmjs.com/package/colors) module
+
 ## Screenshots
-<img src = 'https://cdn.discordapp.com/attachments/820557032016969751/959062827165949973/unknown.png'>
+<img src = 'https://cdn.discordapp.com/attachments/878276279105884210/1063811425346265150/68747470733a2f2f63646e2e646973636f72646170702e636f6d2f6174746163686d656e74732f3733393933373530373736383237303933392f313036313938393531353834333038303239322f414e53492e706e67.png'>
+
+
+## colors and styles!
+
+### text colors
+
+  - red
+  - green
+  - yellow
+  - blue
+  - pink
+  - cyan
+  - white
+  - gray
+
+### background colors
+
+  - bgDarkBlue
+  - bgOrange
+  - bgGray
+  - bgLightGray
+  - bgIndigo
+  - bgMagenta
+  - bgWhite
+### styles
+
+  - bold
+  - underline
 
 ## Using ?
-> Create contructor
+> Patch `String`
 ```js
 const BetterMarkdown = require('discord-bettermarkdown');
-const markdown = new BetterMarkdown();
 ```
-> Adding new text
+> Send Message (discord.js)
 ```js
-// Text, type, color, backgroundColor, add new line?
-markdown.format('Hello World', 'DEFAULT', 'RED', null, true);
-/**
- * 'Hello World': Text to format
- *  'DEFAULT': Text not bold, underline
- *  'RED': Color
- *  null: BackgroundColor
- *  true: Add new line
- */
+const HelloWorld = 'Hello World'.red.bgWhite.bold.underline;
+console.log(HelloWorld); // it's work!
+channel.send(`\`\`\`ansi\n${HelloWorld}\`\`\``);
+// Send `Hello World` with color red, background color white, bold, underline
 ```
-- <strong>List Color</strong>
-```js
-/**
-   * * ColorName: enum
-   * * `GRAY`: 30,
-   * * `RED`: 31,
-   * * `GREEN`: 32,
-   * * `YELLOW`: 33,
-   * * `BLUE`: 34,
-   * * `PINK`: 35,
-   * * `CYAN`: 36,
-   * * `WHITE`: 37
-*/
-```
-- <strong>List BackgroundColor</strong>
-```js
-/**
-   * * ColorName: enum
-   * * `DARKBLUE`: 40,
-   * * `ORANGE`: 41,
-   * * `GRAY`: 42,
-   * * `LIGHTGRAY`: 44,
-   * * `INDIGO`: 45,
-   * * `WHITE`: 47
-*/
-```
-- <strong>List Type</strong>
-```js
-/**
-   * * Type: enum
-   * * `BOLD`: '0;1;',
-   * * `UNDERLINE`: '0;4;',
-   * * `DEFAULT`: '0;',
-   * * `BOTH`: '1;4;',
-*/
-```
-> Convert to Discord Content
-```js
-markdown.toCodeblock();
-// Discord Sending:
-message.channel.send(markdown.toCodeblock());
-```
+<img src='https://cdn.discordapp.com/attachments/878276279105884210/1063813331980386334/image.png'>
 
 # [<strong>Credit: Here</strong>](https://gist.github.com/kkrypt0nn/a02506f3712ff2d1c8ca7c9e0aed7c06)

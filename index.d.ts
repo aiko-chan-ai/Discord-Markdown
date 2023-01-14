@@ -1,10 +1,26 @@
-declare class BetterMarkdown {
-    constructor();
-    private string: BetterMarkdownString;
-    public format(text: String, type: formatType, color: colorTypeString, backgroundColor: backgroundColorTypeString, newLine: Boolean): String;
-    public toCodeblock(): BetterMarkdownString;
+export {};
+
+declare global {
+	interface String {
+		// Color
+		red: string;
+		green: string;
+		yellow: string;
+		blue: string;
+		pink: string;
+		cyan: string;
+		white: string;
+		gray: string;
+		// Background Color
+		bgDarkBlue: string;
+		bgOrange: string;
+		bgGray: string;
+		bgLightGray: string;
+		bgIndigo: string;
+		bgWhite: string;
+		// Other
+		// @ts-ignore
+		bold: string;
+		underline: string;
+	}
 }
-declare type colorTypeString = 'GRAY' | 'RED' | 'GREEN' | 'YELLOW' | 'BLUE' | 'PINK' | 'CYAN' | 'WHITE';
-declare type backgroundColorTypeString = 'DARKBLUE' | 'ORANGE' | 'GRAY' | 'LIGHTGRAY' | 'INDIGO' | 'WHITE';
-declare type formatType = 'DEFAULT' | 'BOLD' | 'UNDERLINE' | 'BOTH'
-export = BetterMarkdown;
