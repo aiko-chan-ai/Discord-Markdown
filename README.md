@@ -10,7 +10,7 @@ v1.x.x
 - const BetterMarkdown = require('discord-bettermarkdown');
 - const markdown = new BetterMarkdown();
 - markdown.format('Hello World', 'DEFAULT', 'RED', null, true);
-v2.0.0
+v2.x.x
 + const BetterMarkdown = require('discord-bettermarkdown');
 + 'Hello World'.red
 ```
@@ -47,6 +47,7 @@ v2.0.0
 
   - bold
   - underline
+  - reset
 
 ## Using ?
 > Patch `String`

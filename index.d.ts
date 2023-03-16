@@ -22,5 +22,6 @@ declare global {
 		// @ts-ignore
 		bold: string;
 		underline: string;
+		reset: string;
 	}
 }
