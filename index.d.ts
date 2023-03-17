@@ -14,9 +14,11 @@ declare global {
 		// Background Color
 		bgDarkBlue: string;
 		bgOrange: string;
+		bgMarbleBlue: string;
+		bgGreyishTurquoise: string;
 		bgGray: string;
-		bgLightGray: string;
 		bgIndigo: string;
+		bgLightGray: string;
 		bgWhite: string;
 		// Other
 		// @ts-ignore

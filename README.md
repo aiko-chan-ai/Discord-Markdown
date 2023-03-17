@@ -38,10 +38,11 @@ v2.x.x
 
   - bgDarkBlue
   - bgOrange
+  - bgMarbleBlue
+  - bgGreyishTurquoise
   - bgGray
-  - bgLightGray
   - bgIndigo
-  - bgMagenta
+  - bgLightGray
   - bgWhite
 ### styles
 

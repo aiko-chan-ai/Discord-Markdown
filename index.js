@@ -19,13 +19,15 @@ const validColor = {
 };
 
 const validBackgroundColor = {
-	bgDarkBlue: "99;40m",
-	bgOrange: "99;41m",
-	bgGray: "99;42m",
-	bgLightGray: "99;44m",
-	bgIndigo: "99;45m",
-	bgWhite: "99;47m"
-}
+	bgDarkBlue: '99;40m',
+	bgOrange: '99;41m',
+	bgMarbleBlue: '99;42m',
+	bgGreyishTurquoise: '99;43m',
+	bgGray: '99;44m',
+	bgIndigo: '99;45m',
+	bgLightGray: '99;46m',
+	bgWhite: '99;47m',
+};
 
 const UNDERLINE = '4;99m';
 const BOLD = '1;99m';
